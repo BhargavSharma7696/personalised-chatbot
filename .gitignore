@@ -1,26 +1,35 @@
-# Dependencies
+# Node & Frontend dependencies
 node_modules/
 frontend/node_modules/
-.venv/
 frontend/dist/
 
-# Backend (has its own git repo)
-backend/
+# Python Virtual Environments
+.venv/
+backend/.venv/
 
-# Database & SQLite
+# Python caches
+__pycache__/
+*.py[cod]
+.ruff_cache/
+backend/.ruff_cache/
+
+# SQLite & Databases
 *.db
 *.db-shm
 *.db-wal
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
 
-# Python
-__pycache__/
-*.py[cod]
+# Environment files
+.env
+backend/.env
+frontend/.env
 
-# OS / Editor
+# Local documentation excluded from repository
+FRONTEND_GUIDE.md
+
+# Operating System & IDE files
 .DS_Store
 .vscode/
 .idea/
-
-# Local docs (excluded from git)
-FRONTEND_GUIDE.md
-
