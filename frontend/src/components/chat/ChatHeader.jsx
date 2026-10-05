@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -48,28 +49,30 @@ export function ChatHeader() {
             }
           />
           <DropdownMenuContent align="end" className="w-64 p-1.5">
-            <DropdownMenuLabel className="text-xs font-semibold px-2 py-1 text-muted-foreground">
-              Select Model
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator className="my-1" />
-            {AVAILABLE_MODELS.map((model) => {
-              const isSelected = selectedModel === model.id
-              return (
-                <DropdownMenuItem
-                  key={model.id}
-                  onClick={() => setSelectedModel(model.id)}
-                  className="flex items-start justify-between gap-2 px-2 py-2 rounded-md cursor-pointer hover:bg-muted focus:bg-muted text-xs"
-                >
-                  <div className="flex flex-col gap-0.5">
-                    <span className="font-medium text-foreground">{model.label}</span>
-                    <span className="text-[11px] text-muted-foreground leading-tight">
-                      {model.description}
-                    </span>
-                  </div>
-                  {isSelected && <Check className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />}
-                </DropdownMenuItem>
-              )
-            })}
+            <DropdownMenuGroup>
+              <DropdownMenuLabel className="text-xs font-semibold px-2 py-1 text-muted-foreground">
+                Select Model
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="my-1" />
+              {AVAILABLE_MODELS.map((model) => {
+                const isSelected = selectedModel === model.id
+                return (
+                  <DropdownMenuItem
+                    key={model.id}
+                    onClick={() => setSelectedModel(model.id)}
+                    className="flex items-start justify-between gap-2 px-2 py-2 rounded-md cursor-pointer hover:bg-muted focus:bg-muted text-xs"
+                  >
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-medium text-foreground">{model.label}</span>
+                      <span className="text-[11px] text-muted-foreground leading-tight">
+                        {model.description}
+                      </span>
+                    </div>
+                    {isSelected && <Check className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />}
+                  </DropdownMenuItem>
+                )
+              })}
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

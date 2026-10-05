@@ -20,13 +20,13 @@ export function ChatSidebar({ ...props }) {
   const { chats, activeThread, startNewChat, selectChat, selectedModel } = useChat()
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-border/50 bg-sidebar" {...props}>
+    <Sidebar collapsible="offcanvas" className="border-r border-border/50 bg-sidebar" {...props}>
       <SidebarHeader className="p-3 gap-3 border-b border-border/40">
         <div className="flex items-center gap-2 px-1">
           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <Bot className="h-4 w-4" />
           </div>
-          <div className="flex flex-col group-data-[collapsible=icon]:hidden">
+          <div className="flex flex-col">
             <span className="font-semibold text-sm leading-none text-sidebar-foreground">
               MyChatBot
             </span>
@@ -37,10 +37,10 @@ export function ChatSidebar({ ...props }) {
         <Button
           onClick={startNewChat}
           variant="outline"
-          className="w-full justify-start gap-2 bg-sidebar-accent/50 hover:bg-sidebar-accent border-sidebar-border text-sidebar-foreground group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0"
+          className="w-full justify-start gap-2 bg-sidebar-accent/50 hover:bg-sidebar-accent border-sidebar-border text-sidebar-foreground"
         >
           <Plus className="h-4 w-4 shrink-0" />
-          <span className="group-data-[collapsible=icon]:hidden">New Chat</span>
+          <span>New Chat</span>
         </Button>
       </SidebarHeader>
 
@@ -52,7 +52,7 @@ export function ChatSidebar({ ...props }) {
           <SidebarGroupContent>
             <SidebarMenu>
               {chats.length === 0 ? (
-                <div className="px-3 py-6 text-center text-xs text-muted-foreground group-data-[collapsible=icon]:hidden">
+                <div className="px-3 py-6 text-center text-xs text-muted-foreground">
                   No conversations yet. Send a message to start!
                 </div>
               ) : (
@@ -79,9 +79,9 @@ export function ChatSidebar({ ...props }) {
       </SidebarContent>
 
       <SidebarFooter className="p-3 border-t border-border/40">
-        <div className="flex items-center gap-2 px-1 text-xs text-muted-foreground group-data-[collapsible=icon]:justify-center">
+        <div className="flex items-center gap-2 px-1 text-xs text-muted-foreground">
           <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" />
-          <span className="truncate group-data-[collapsible=icon]:hidden">
+          <span className="truncate">
             Active: <span className="font-mono text-sidebar-foreground">{selectedModel}</span>
           </span>
         </div>

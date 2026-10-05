@@ -31,6 +31,39 @@ describe('ChatHeader & ChatInput', () => {
     expect(screen.getByText('Test Thread')).toBeInTheDocument()
   })
 
+  it('opens model dropdown on click and allows selecting a model', () => {
+    const setSelectedModel = vi.fn()
+    const mockContext = {
+      selectedModel: 'gpt-oss-120b',
+      setSelectedModel,
+      activeThread: 'thread-1',
+      chats: [],
+      isNewThread: true,
+    }
+
+    render(
+      <TooltipProvider>
+        <SidebarProvider>
+          <ChatContext.Provider value={mockContext}>
+            <ChatHeader />
+          </ChatContext.Provider>
+        </SidebarProvider>
+      </TooltipProvider>
+    )
+
+    const trigger = screen.getByRole('button', { name: /GPT-OSS 120B/i })
+    fireEvent.click(trigger)
+
+    // Verify dropdown content is visible
+    expect(screen.getByText('Select Model')).toBeInTheDocument()
+    expect(screen.getByText('Space Bunny Alpha')).toBeInTheDocument()
+    expect(screen.getByText('Nemotron-3')).toBeInTheDocument()
+
+    // Click to select model
+    fireEvent.click(screen.getByText('Space Bunny Alpha'))
+    expect(setSelectedModel).toHaveBeenCalledWith('stealth/space-bunny-alpha')
+  })
+
   it('renders ChatInput and calls sendMessage on send click', () => {
     const sendMessage = vi.fn()
     const mockContext = {
