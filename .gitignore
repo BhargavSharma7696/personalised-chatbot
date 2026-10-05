@@ -28,6 +28,8 @@ frontend/.env
 
 # Local documentation excluded from repository
 FRONTEND_GUIDE.md
+docs/
+
 
 # Operating System & IDE files
 .DS_Store
