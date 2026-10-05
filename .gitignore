@@ -20,3 +20,7 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# Local docs (excluded from git)
+FRONTEND_GUIDE.md
+
