@@ -29,6 +29,8 @@ frontend/.env
 # Local documentation excluded from repository
 FRONTEND_GUIDE.md
 docs/
+COMPONENT_ARCHITECTURE.md
+
 
 
 # Operating System & IDE files
